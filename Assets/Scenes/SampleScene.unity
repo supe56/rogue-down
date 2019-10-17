@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 142565983}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,14 +295,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 142565980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a9cee2e971d83049b7f8477ef697c51, type: 3}
+  m_Script: {fileID: 11500000, guid: 23063ed047b97a6498064e7a021ce0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
   tpRange: 5
   tpCooldown: 2.5
-  bulletSpread: 0.5
   bulletSpeed: 15
+  health: 0
+  startHealth: 100
   gun: {fileID: 885681302}
   bullet: {fileID: 7788666820248951528, guid: e6f483c54bad891489746b3d1316d274, type: 3}
 --- !u!50 &142565984
@@ -499,7 +500,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -607,7 +608,7 @@ GameObject:
   - component: {fileID: 1630594872}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -714,7 +715,7 @@ GameObject:
   - component: {fileID: 1642489659}
   m_Layer: 0
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -821,7 +822,7 @@ GameObject:
   - component: {fileID: 1730975822}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -928,7 +929,7 @@ GameObject:
   - component: {fileID: 2082297487}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace Actor
+namespace Players
 {
     public class Actor : MonoBehaviour
     {
@@ -7,47 +7,22 @@ namespace Actor
         public float moveSpeed = 7f;
         public float tpRange = 5;
         public float tpCooldown = 2.5f;
-
-        public float bulletSpread = 0.5f;
         public float bulletSpeed = 15f;
+        public float health = 100;
+        public float startHealth = 100;
 
         public GameObject gun;
         public GameObject bullet;
 
         bool canTp = true;
-        float horizontal;
-        float vertical;
         float moveLimiter = 0.7f;
-        Rigidbody2D body;
 
-        void Start()
+        protected void Start()
         {
-            body = GetComponent<Rigidbody2D>();
+            health = startHealth;
         }
 
-        void Update()
-        {
-            horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-            vertical = Input.GetAxisRaw("Vertical"); // -1 is down
-        }
-
-        void FixedUpdate()
-        {
-            if (horizontal != 0 && vertical != 0) // Check for diagonal movement
-            {
-                // limit movement speed diagonally, so you move at 70% speed
-                horizontal *= moveLimiter;
-                vertical *= moveLimiter;
-            }
-
-            body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
-
-            if (Input.GetKeyDown(KeyCode.Mouse1)) Dash(tpRange);
-            gun.transform.rotation = Quaternion.AngleAxis(GetAngle() - 90, Vector3.forward);
-            if (Input.GetKeyDown(KeyCode.Mouse0)) Fire();
-        }
-
-        float GetAngle() // Returns the angle between the mouse and the center of the screen
+        public float GetAngle() // Returns the angle between the mouse and the center of the screen
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -58,7 +33,7 @@ namespace Actor
             return angle;
         }
 
-        void Dash(float range)
+        public void Dash(float range)
         {
             if (!canTp) return;
             float angle = GetAngle() * Mathf.Deg2Rad;
@@ -72,11 +47,36 @@ namespace Actor
 
         void PrepareTp() { canTp = true; }
 
-        void Fire()
+        public void Fire()
         {
             GameObject newBullet;
             newBullet = Instantiate(bullet, transform.position, gun.transform.rotation);
             newBullet.GetComponent<Rigidbody2D>().velocity = (gun.transform.up * bulletSpeed);
+        }
+
+        public void Move(float horizontal, float vertical)
+        {
+            if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+            {
+                // limit movement speed diagonally, so you move at 70% speed
+                horizontal *= moveLimiter;
+                vertical *= moveLimiter;
+            }
+            GetComponent<Rigidbody2D>().velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        }
+
+        public void Damage(float damage)
+        {
+            health -= damage;
+            if(health <= 0)
+            {
+                Kill();
+            }
+        }
+
+        public void Kill()
+        {
+            Destroy(gameObject);
         }
     }
 }
