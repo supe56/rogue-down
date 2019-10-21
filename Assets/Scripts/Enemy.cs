@@ -18,13 +18,16 @@ namespace Players
         {
             gun.transform.rotation = Quaternion.AngleAxis(GetAngle("Player"), Vector3.forward);
             Fire();
-            if (transform.position.x - player.transform.position.x < -enemyDistance) horizontal = 1;
-            else if (transform.position.x - player.transform.position.x > enemyDistance) horizontal = -1;
-            else horizontal = 0;
-            if (transform.position.y - player.transform.position.y < -enemyDistance) vertical = 1;
-            else if (transform.position.y - player.transform.position.y > enemyDistance) vertical = -1;
-            else vertical = 0;
-            Move(horizontal, vertical);
+            if (Vector3.Distance(transform.position, player.transform.position) > enemyDistance)
+            {
+                if (transform.position.x - player.transform.position.x < -0.1f) horizontal = 1; //right
+                else if (transform.position.x - player.transform.position.x > 0.1f) horizontal = -1; //left
+                else horizontal = 0;
+                if (transform.position.y - player.transform.position.y < -0.1f) vertical = 1; //up
+                else if (transform.position.y - player.transform.position.y > 0.1f) vertical = -1; //down
+                else vertical = 0;
+                Move(horizontal, vertical);
+            }
         }
     }
 
