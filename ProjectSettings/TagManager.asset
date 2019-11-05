@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
   - Actor
   - Bullet
+  - Level Gen
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - 
   - Room
-  - 
+  - Raycast
   - 
   - 
   - 

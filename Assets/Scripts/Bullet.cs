@@ -5,24 +5,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float damage = 1f;
+    public float damage = 20f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-        }
-
-        if (other.tag == "Actor")
-        {
-            if (gameObject.name == "Bullet(Clone)" && other.name != "Player" || gameObject.name == "EnemyBullet(Clone)" && other.name == "Player")
-            {
-                Actor targetHit = other.gameObject.GetComponent(typeof(Actor)) as Actor;
-                if (targetHit != null) targetHit.Damage(damage);
+        if (other.tag == "Actor") {
+            Actor targetHit = other.gameObject.GetComponent(typeof(Actor)) as Actor;
+            if (gameObject.name == "Bullet(Clone)" && other.name != "Player" || gameObject.name == "EnemyBullet(Clone)" && other.name == "Player" || other.name == "Wall") {
+                if (targetHit != null)
+                    targetHit.Damage(damage);
                 Destroy(gameObject);
             }
-
         }
 
         if (other.CompareTag("Bullet"))

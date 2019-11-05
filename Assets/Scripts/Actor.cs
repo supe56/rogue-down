@@ -9,7 +9,7 @@ namespace Players
         public float tpCooldown = 2.5f;
         public float bulletSpeed = 15f;
         public float fireRate = 0.75f;
-        public float health = 100;
+        public float health = 5;
         public float startHealth = 100;
 
         public GameObject gun;
