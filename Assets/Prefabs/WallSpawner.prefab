@@ -95,3 +95,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: {fileID: 537055975958441244, guid: 7bfe1705a979da64296cd0478db4c859, type: 3}
   moveDistance: 2
+  player: {fileID: 898419292962545924, guid: b60cd80c78fe5bf4981c44808026f992, type: 3}

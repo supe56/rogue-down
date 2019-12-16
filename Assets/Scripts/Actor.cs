@@ -11,12 +11,15 @@ namespace Players
         public float fireRate = 0.75f;
         public float health = 5;
         public float startHealth = 100;
+        public float wakeRange = 10f;
 
         public GameObject gun;
         public GameObject bullet;
 
         public float vertical;
         public float horizontal;
+
+        public bool awake;
 
         bool canFire = true;
         bool canTp = true;
@@ -35,6 +38,7 @@ namespace Players
             }
             else
             {
+                if (GameObject.Find(dest) == null) return 0;
                 Vector3 objectPos = GameObject.Find(dest).transform.position;
                 objectPos -= transform.position;
                 float angle = Mathf.Atan2(-objectPos.x, objectPos.y) * Mathf.Rad2Deg;
