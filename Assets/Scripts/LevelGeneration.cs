@@ -12,8 +12,8 @@ public class LevelGeneration : MonoBehaviour
     [Range(0.0f, 100.0f)] public float enemyChance;
     public GameObject[] rooms;
 
-    public float totalFloors = 100;
-    public float btwMove = 0.02f;
+    public float totalFloors = 100;         //total number of floor tiles
+    public float btwMove = 0.02f;           //between move
     public float moveDistance = 1f;
     public GameObject floorTile;
     public GameObject Enemy;
@@ -23,6 +23,7 @@ public class LevelGeneration : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 15;
         Instantiate(floorTile, transform.position, Quaternion.identity);
         Invoke("Move", btwMove);
     }
@@ -61,7 +62,7 @@ public class LevelGeneration : MonoBehaviour
 
     private void GenerateRoom()
     {
-        Instantiate(rooms[Random.Range(0, rooms.Length)], transform.position, transform.rotation);
+       Instantiate(rooms[Random.Range(0, rooms.Length)], transform.position, transform.rotation);
     }
 
     private void CreateBranch()
@@ -70,8 +71,7 @@ public class LevelGeneration : MonoBehaviour
         deleteChance = GameObject.FindGameObjectsWithTag("Level Gen").Length * 3;
         lvlGen = gameObject;
         deleteChance = 0;
-        if (Random.Range(1, 3) == 1) Instantiate(lvlGen, transform.position, Quaternion.Euler(0, 0, transform.rotation.y + 90));
-        else Instantiate(lvlGen, transform.position, Quaternion.Euler(0, 0, transform.rotation.y + 90));
+        Instantiate(lvlGen, transform.position, Quaternion.Euler(0, 0, transform.rotation.y + 90));
     }
 
     private void SpawnItem()

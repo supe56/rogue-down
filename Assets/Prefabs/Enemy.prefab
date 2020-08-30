@@ -45,6 +45,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -129,6 +130,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -154,7 +156,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3c8542d81455d9c49aab3b999007af3a, type: 3}
-  m_Color: {r: 0.3584906, g: 0.21137416, b: 0.21137416, a: 1}
+  m_Color: {r: 0.5849056, g: 0.050893348, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -227,17 +229,21 @@ MonoBehaviour:
   tpRange: 5
   tpCooldown: 2.5
   bulletSpeed: 15
-  fireRate: 0.75
+  fireRate: 1.25
   health: 100
   startHealth: 100
-  wakeRange: 5000
+  wakeRange: 10
   gun: {fileID: 8058561984649020909}
   bullet: {fileID: 1587685978249495282, guid: d9912e71533a9a34899977c7c8a0ac90, type: 3}
   vertical: 0
   horizontal: 0
   awake: 0
+  canTp: 1
   player: {fileID: 0}
-  enemyDistance: 7
+  enemyDistance: 10
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &8058561984649020909
 GameObject:
   m_ObjectHideFlags: 0

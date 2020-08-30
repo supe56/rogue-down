@@ -22,7 +22,7 @@ namespace Players
         public bool awake;
 
         bool canFire = true;
-        bool canTp = true;
+        public bool canTp = true;
         readonly float moveLimiter = 0.7f;
 
         public float GetAngle(string dest) // Returns the angle between the mouse and the center of the screen
@@ -55,6 +55,7 @@ namespace Players
             dashPos.y = Mathf.Sin(angle);
             transform.Translate(dashPos * range);
             canTp = false;
+            GetComponent<AudioSource>().Play();                                         //PLAYSOUND!!!!!!!
             Invoke("PrepareTp", tpCooldown);
         }
 

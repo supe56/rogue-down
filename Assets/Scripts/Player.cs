@@ -6,6 +6,8 @@ namespace Players
 {
     public class Player : Actor
     {
+        public GameObject tpRing;
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -25,6 +27,10 @@ namespace Players
             vertical = Input.GetAxisRaw("Vertical"); // -1 is down
             Move(horizontal, vertical);
             gun.transform.rotation = Quaternion.AngleAxis(GetAngle("Mouse") - 90, Vector3.forward);
+            if (canTp)
+                tpRing.GetComponent<SpriteRenderer>().color = new Color(0.15625f, 0, 0, 0.5f);
+            else
+                tpRing.GetComponent<SpriteRenderer>().color = new Color(0.15625f, 0, 0, 0.25f);
         }
     }
 

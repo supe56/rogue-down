@@ -11,7 +11,9 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag == "Actor") {
             Actor targetHit = other.gameObject.GetComponent(typeof(Actor)) as Actor;
-            if (gameObject.name == "Bullet(Clone)" && other.name != "Player" || gameObject.name == "EnemyBullet(Clone)" && other.name == "Player" || other.name == "Wall") {
+            if (gameObject.name == "Bullet(Clone)" && other.name == "Player(Clone)" || gameObject.name == "EnemyBullet(Clone)" && other.name == "Enemy(Clone)")
+                return;
+            else {
                 if (targetHit != null)
                     targetHit.Damage(damage);
                 Destroy(gameObject);
